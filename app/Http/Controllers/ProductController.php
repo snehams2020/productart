@@ -102,7 +102,7 @@ class ProductController extends Controller
             'category_id'=>$request->category_id
         ]);
 
-        return redirect()->back()->with('success', 'Category successfully updated.');
+        return redirect()->back()->with('success', 'Product successfully updated.');
     }
 
     /**
@@ -113,9 +113,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product=Product::where('category_id',$id)->delete();
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->back()->with('success', 'Category successfully deleted.');
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->back()->with('success', 'Product successfully deleted.');
     }
 }
