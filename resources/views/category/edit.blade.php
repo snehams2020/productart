@@ -12,6 +12,15 @@
     @elseif(session()->has('error'))
         <label class="alert alert-danger w-100">{{session('error')}}</label>
     @endif
+     @if (count($errors) > 0)
+         <div class = "alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+               @endforeach
+            </ul>
+         </div>
+      @endif
 
     <form action="{{ route('category.update', ['id' => $category->id]) }}" method="POST">
 
